@@ -1,0 +1,24 @@
+{
+  "name": "sails-pg-session",
+  "description": "Sails adapter to store sessions in postgres.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Ravi Teja",
+    "email": "ravi-tej@live.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ravitej91/sails-pg-session.git"
+  },
+  "main": "./index.js",
+  "dependencies": {
+    "pg": "~4.4.0",
+    "debug": "*"
+  },
+  "devDependencies": {
+    "connect": "*"
+  },
+  "engines": {
+    "node": "*"
+  }
+}

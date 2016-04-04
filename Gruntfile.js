@@ -68,7 +68,7 @@ module.exports = function(grunt) {
 				tag: true, 
 				push: true, 
 				pushTags: true, 
-				npm: true, 
+				npm: false, 
 //				npmtag: '<%= version %>', 
 				indentation: '  ', 
 //				folder: 'folder/to/publish/to/npm',	//default project root 

@@ -3,7 +3,7 @@ sails-pg-session
 
 Adapter for Sails Js to store sessions in Postgres using a pool of connections.
 
-The original implementation uses a single connection to the database. In case that connection is dropped by an external active element on the network (for instance, a firewall between the  the webapp and the database), the connection is no more usable and the adapter doesn't notice it.
+The original implementation uses a single connection to the database. In case that connection is dropped by an external active element on the network (for instance, a firewall between the  the webapp and the database), the connection is no longer usable and the adapter doesn't notice it.
 
 This fork uses a pool of connection.
 

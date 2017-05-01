@@ -1,7 +1,7 @@
 {
   "name": "sails-pg-session",
   "description": "Sails adapter to store sessions in postgres.",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": {
     "name": "Ravi Teja",
     "email": "ravi-tej@live.com"

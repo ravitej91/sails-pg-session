@@ -17,14 +17,30 @@ CREATE TABLE sails_session_store(
 );
 
 -- set data for session
+-- initial implementation changed to allow concurrency
+-- credit goas to [stephen-denne](`http://stackoverflow.com/users/11721/stephen-denne`)
+-- see [stackoverflow](http://stackoverflow.com/questions/1109061/insert-on-duplicate-update-in-postgresql/8702291
 CREATE OR REPLACE FUNCTION sails_session_store_set(sid_in text, data_in json)
 RETURNS void
 LANGUAGE plpgsql
 AS $$
 BEGIN
-  -- delete current session data if it exists so the next insert succeeds
-  DELETE FROM sails_session_store WHERE sid = sid_in;
-  INSERT INTO sails_session_store(sid, data) VALUES(sid_in, data_in);
+  LOOP
+    -- first try to update the key
+    UPDATE sails_session_store SET data = data_in WHERE sid = sid_in;
+    IF found THEN
+      RETURN;
+    END IF;
+    -- not there, so try to insert the key
+    -- if someone else inserts the same key concurrently,
+    -- we could get a unique-key failure
+    BEGIN
+      INSERT INTO sails_session_store(sid, data) VALUES(sid_in, data_in);
+      RETURN;
+    EXCEPTION WHEN unique_violation THEN
+        -- do nothing, and loop to try the UPDATE again
+    END;
+  END LOOP;
 END;
 $$;
 

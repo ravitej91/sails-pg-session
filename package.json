@@ -1,19 +1,19 @@
 {
-  "name": "sails-pg-session",
+  "name": "v2land-sails-pg-session",
   "description": "Sails adapter to store sessions in postgres.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "author": {
     "name": "Ravi Teja",
     "email": "ravi-tej@live.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ravitej91/sails-pg-session.git"
+    "url": "git://github.com/v2land/sails-pg-session.git"
   },
   "main": "./index.js",
   "dependencies": {
-    "pg": "~4.4.0",
-    "debug": "*"
+    "debug": "*",
+    "pg": "^7.4.1"
   },
   "devDependencies": {
     "connect": "*"
